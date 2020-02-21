@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "example": true,
+    "dist": true
+  }
+}
