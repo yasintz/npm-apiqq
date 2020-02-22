@@ -1,5 +1,6 @@
 import React from 'react';
-import narrowObject, { narrowToString } from 'narrow-object';
+import narrowObject from 'narrow-object';
+import deepEqual from 'deep-equal';
 import { BaseQuery, UseQueryOptions, UseQueryResult } from '../helpers';
 import { usePrevious, useObjectState } from '../utils/hooks';
 import { useApiCallContext } from '../contexts/api-call';
@@ -15,7 +16,7 @@ function useQuery<T extends BaseQuery>(
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = React.useMemo(() => ({ variables: {}, ...userOptions }), [
-    narrowToString(narrowObject(userOptions)),
+    narrowObject(userOptions).toString(),
   ]);
   const prevOptions = usePrevious(options);
   const { queryHandler, getDataByRouteId } = useQueryContext();
@@ -29,10 +30,7 @@ function useQuery<T extends BaseQuery>(
     if (options.skip) {
       return;
     }
-    if (
-      narrowToString(narrowObject(prevOptions || {})) !==
-      narrowToString(narrowObject(options))
-    ) {
+    if (!deepEqual(prevOptions, options)) {
       if (state.loading === false || state.isCompleted === true) {
         setState({ loading: true, isCompleted: false });
       }

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import narrowObject, { narrowToString } from 'narrow-object';
-import qqueue, { create as createQQueue } from 'qqueue';
+import narrowObject from 'narrow-object';
+import QQueue from 'qqueue';
 import routeSchema from 'route-schema';
 import {
   ApiCallContextType,
@@ -11,7 +11,6 @@ import {
 } from '../helpers';
 import { useDatabaseObjectsContext } from './objects';
 import { getRouteByEndpoint, getKeyByValue } from '../utils';
-type Queue = typeof qqueue;
 const initialValue: ApiCallContextType = {
   fetch: () => Promise.resolve(),
   fetchIfNotExist: () => Promise.resolve(),
@@ -27,7 +26,7 @@ function useApiCallContext() {
   return React.useContext(ApiCallContext);
 }
 
-const queryQueue: Record<string, Queue> = {};
+const queryQueue: Record<string, QQueue> = {};
 const queryResults: Record<string, any> = {};
 
 const getQueue = (routeId: string) => {
@@ -39,7 +38,7 @@ const getQueueOrCreate = (routeId: string) => {
   if (queue) {
     return queue;
   }
-  queryQueue[routeId] = createQQueue();
+  queryQueue[routeId] = new QQueue();
 
   return queryQueue[routeId];
 };
@@ -60,9 +59,7 @@ function ApiCallContextProvider(
   const getRouteId = React.useCallback(
     (query: QueryHandlerParams['query'], variables?: Record<string, any>) => {
       const endpointKey = getRouteByEndpoint(props.queries, query);
-      const variablesNarrowString = narrowToString(
-        narrowObject(variables || {})
-      );
+      const variablesNarrowString = narrowObject(variables || {}).toString();
 
       return endpointKey + variablesNarrowString;
     },
@@ -133,8 +130,7 @@ function ApiCallContextProvider(
         databaseContext.getObjects()
       );
       if (
-        narrowToString(narrowObject(oldData)) !==
-        narrowToString(narrowObject(newData))
+        narrowObject(oldData).toString() !== narrowObject(newData).toString()
       ) {
         queryResults[routeId] = newData;
       }

@@ -1,5 +1,5 @@
 import React from 'react';
-import narrowObject, { narrowToString } from 'narrow-object';
+import narrowObject from 'narrow-object';
 import {
   BaseEndpointType,
   UseMutationOptions,
@@ -26,7 +26,7 @@ function useMutation<T extends BaseEndpointType>(
   });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = React.useMemo(() => ({ variables: {}, ...userOptions }), [
-    narrowToString(narrowObject(userOptions)),
+    narrowObject(userOptions).toString(),
   ]);
   const mutation = React.useCallback(
     (variables?: EndpointsVariablesType<T>) => {
@@ -66,7 +66,7 @@ function useMutation<T extends BaseEndpointType>(
       mutation,
     }),
     [mutation, state]
-  // TODO: remove any type
+    // TODO: remove any type
   ) as any;
 }
 

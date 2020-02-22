@@ -30,7 +30,7 @@ function MutationContextProvider(
     ({ mutation, variables, refetchQueries }: MutationHandlerParams) => {
       return mutation(variables, queryGetter).then(mutationResult => {
         // TODO: update route scheme routeSchema.separateData(mutationResult, true);
-        const seperatedData = routeSchema.separateData(mutationResult);
+        const seperatedData = routeSchema.separateData(mutationResult, true);
         if (seperatedData !== null) {
           databaseObjectsContext.setObjectsFromBackendResponse(seperatedData);
         }

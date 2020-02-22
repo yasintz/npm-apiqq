@@ -75,8 +75,7 @@ function QueryContextProvider(
       const newStorageObj: Record<string, any> = {};
       const newSchema = backendObjectFunctions.dataToSchema(data);
 
-      // TODO: PREV: const seperatedObj = backendObjectFunctions.separateData(data, true);
-      const seperatedObj = backendObjectFunctions.separateData(data);
+      const seperatedObj = backendObjectFunctions.separateData(data, true);
       if (seperatedObj !== null) {
         const idDatabaseNewValue = deepMergeIdObjects(
           databaseContext.getObjects(),
@@ -91,7 +90,8 @@ function QueryContextProvider(
           const isChangeCurrentRoute = !deepEqual(
             routeDataStore[currenRouteId],
             backendObjectFunctions.schemaToData(
-              currentRoutePrevSchema,
+              // TODO: export Scheme type from route-schema module
+              currentRoutePrevSchema as any,
               databaseContext.getObjects()
             )
           );
@@ -137,7 +137,8 @@ function QueryContextProvider(
         const isChangeCurrentRoute = !deepEqual(
           routeDataStore[routeId],
           backendObjectFunctions.schemaToData(
-            currentRoutePrevSchema,
+              // TODO: export Scheme type from route-schema module
+            currentRoutePrevSchema as any,
             databaseObjects
           )
         );
@@ -150,7 +151,8 @@ function QueryContextProvider(
     changedRoutes.forEach(route => {
       if (Object.keys(databaseObjects).length > 0) {
         newStorageObj[route] = backendObjectFunctions.schemaToData(
-          routeSchemas[route],
+              // TODO: export Scheme type from route-schema module
+          routeSchemas[route] as any,
           databaseObjects
         );
       }

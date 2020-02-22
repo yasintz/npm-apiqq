@@ -6,6 +6,7 @@ import DatabaseObjectContextProvider from './contexts/objects';
 import ApiCallContextProvider from './contexts/api-call';
 import QueryContextProvider from './contexts/query';
 import MutationContextProvider from './contexts/mutation';
+import { copyObject } from './utils/copy-object';
 
 interface ServicesContextProviderProps {
   mutations: any;
@@ -15,33 +16,17 @@ interface ServicesContextProviderProps {
 function ServicesContextProvider(
   props: React.PropsWithChildren<ServicesContextProviderProps>
 ) {
-  const mutations = React.useMemo(() => {
-    if (props.mutations) {
-      const newMutation: Record<string, any> = {};
-      Object.keys(props.mutations).forEach(key => {
-        newMutation[`m_${key}`] = props.mutations[key];
-      });
-
-      return newMutation;
-    }
-
-    return {};
+  const mutations = React.useMemo(
+    () => copyObject(props.mutations, 'mutation'),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    []
+  );
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const queries = React.useMemo(() => {
-    if (props.queries) {
-      const newQueris: Record<string, any> = {};
-      Object.keys(props.queries).forEach(key => {
-        newQueris[`q_${key}`] = props.queries[key];
-      });
-
-      return newQueris;
-    }
-
-    return {};
+  const queries = React.useMemo(
+    () => copyObject(props.queries, 'query'),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    []
+  );
 
   return (
     <DatabaseObjectContextProvider>

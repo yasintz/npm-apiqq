@@ -1514,13 +1514,6 @@ babel-plugin-macros@^2.6.1:
     cosmiconfig "^6.0.0"
     resolve "^1.12.0"
 
-babel-plugin-root-import@^6.4.1:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-root-import/-/babel-plugin-root-import-6.4.1.tgz#5c0dfe7588778b1933764c913fa3ed1c78150bf6"
-  integrity sha512-xwEwOwilsg4ZJr5I8bySvpwxCfF4lhYtqySktyTyAG8gcyDYTIDjjvds8P+IHb5gTbM/jiE9hU8e5ZQPQv8TrA==
-  dependencies:
-    slash "^3.0.0"
-
 babel-plugin-transform-async-to-promises@^0.8.14:
   version "0.8.15"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-async-to-promises/-/babel-plugin-transform-async-to-promises-0.8.15.tgz#13b6d8ef13676b4e3c576d3600b85344bb1ba346"
@@ -4231,10 +4224,10 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-narrow-object@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/narrow-object/-/narrow-object-0.1.1.tgz#683b6c827570f11435f7782c5a169f557451a71d"
-  integrity sha512-QQZY0Hrq6+tCHuXo+u1DxzfWs8SR8CMEQBEuuwsu+k1l28mWEqPHez2P69qeVPoHzk48gWJGFDviziHJjsSOBw==
+narrow-object@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/narrow-object/-/narrow-object-0.1.2.tgz#e77c822f2ae610f6387f7072dd229e209f281eab"
+  integrity sha512-XlHzcNZFdrMuAfzS6J0LUrWsoga13cuBnxvlMYTDTZoaLLNGaDwKRlNRXegItbPzLV0aI1NIhTUFcyLAcEAAcg==
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -4806,10 +4799,10 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-qqueue@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/qqueue/-/qqueue-0.1.1.tgz#00e55fd3cf760029d049959bb90ef4ca2ae7c927"
-  integrity sha512-ovhYSP3Z4/xEcH61CdU8SHgj4BcMPeURAP3gY7NCTUkc12a36zfjx46bPSCpZKULSEWITC34kspkNENG4sg76A==
+qqueue@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/qqueue/-/qqueue-0.1.2.tgz#09c89cb5cfacccdbcfd54ec99775ccb96db323d4"
+  integrity sha512-UAZtUX5T8QbZBo/NWLEE8iHek/OPm9dvK7WU7x4+aYC/aahmAQwo9VDaVicHlpkXqS9eGDRwY0lkbgygQhLHaA==
 
 qs@~6.5.2:
   version "6.5.2"
@@ -5200,10 +5193,10 @@ rollup@^1.27.8:
     "@types/node" "*"
     acorn "^7.1.0"
 
-route-schema@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/route-schema/-/route-schema-0.1.5.tgz#1eb4e42ffe668edf2bdc0813c7c4ad98d5332edd"
-  integrity sha512-e+6MdaiMtEb5YUhZGg6X1j7OEK4xckzdfLhAtrSv9RE4ZmuuWlSt0MSR5dI4dxj4o9uded3k/k2/CfvUQASx6Q==
+route-schema@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/route-schema/-/route-schema-0.1.6.tgz#0b1f7ba0fd6759104f9fa41d31e6276076f281df"
+  integrity sha512-nMJSlztxEnyIbx+C1yt3YDAjLe1kqKZj0uGHJijXgBV1aEQzPNmJJkDPJaEmNH6K/7H0pRmcuqsKQvMCYyl7TA==
 
 rsvp@^4.8.4:
   version "4.8.5"

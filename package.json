@@ -53,8 +53,8 @@
   },
   "dependencies": {
     "deep-equal": "^2.0.1",
-    "narrow-object": "^0.1.1",
-    "qqueue": "^0.1.1",
-    "route-schema": "^0.1.5"
+    "narrow-object": "^0.1.2",
+    "qqueue": "^0.1.2",
+    "route-schema": "^0.1.6"
   }
 }
