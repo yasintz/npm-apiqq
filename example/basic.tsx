@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Provider, { useMutation, useQuery } from '../.';
+import Provider, { useMutation, useQuery } from 'apiqq';
 import { queries, mutations } from './api-functions';
 
 const Overrider = () => {

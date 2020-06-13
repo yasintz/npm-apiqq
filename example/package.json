@@ -8,6 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "apiqq": "../",
     "axios": "^0.19.2",
     "react-app-polyfill": "^1.0.0"
   },

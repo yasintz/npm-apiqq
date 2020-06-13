@@ -73,7 +73,7 @@ function QueryContextProvider(
     (params: QueryHandlerParams) => (data: any) => {
       const currenRouteId = getRouteId(params.query, params.variables);
       const newStorageObj: Record<string, any> = {};
-      const newSchema = backendObjectFunctions.dataToSchema(data);
+      const newSchemaOfCurrentRoute = backendObjectFunctions.dataToSchema(data);
 
       const seperatedObj = backendObjectFunctions.separateData(data, true);
       if (seperatedObj !== null) {
@@ -86,12 +86,12 @@ function QueryContextProvider(
           databaseContext.setObjectsFromBackendResponse(seperatedObj);
         }
         if (isRouteCacheTaken(currenRouteId)) {
-          const currentRoutePrevSchema = routeSchemas[currenRouteId];
+          const prevSchemaOfCurrentRoute = routeSchemas[currenRouteId];
           const isChangeCurrentRoute = !deepEqual(
             routeDataStore[currenRouteId],
             backendObjectFunctions.schemaToData(
               // TODO: export Scheme type from route-schema module
-              currentRoutePrevSchema as any,
+              prevSchemaOfCurrentRoute as any,
               databaseContext.getObjects()
             )
           );
@@ -99,8 +99,8 @@ function QueryContextProvider(
           if (isChangeCurrentRoute) {
             newStorageObj[currenRouteId] = data;
           }
-          if (!deepEqual(newSchema, currentRoutePrevSchema)) {
-            setRouteSchemas({ [currenRouteId]: newSchema } as any);
+          if (!deepEqual(newSchemaOfCurrentRoute, prevSchemaOfCurrentRoute)) {
+            setRouteSchemas({ [currenRouteId]: newSchemaOfCurrentRoute } as any);
           }
           if (
             !deepEqual(routeDataStore, { ...routeDataStore, ...newStorageObj })
@@ -111,7 +111,7 @@ function QueryContextProvider(
           return { routeId: currenRouteId, ...params, queryResult: data };
         }
         setRouteDataStore({ [currenRouteId]: data });
-        setRouteSchemas({ [currenRouteId]: newSchema } as any);
+        setRouteSchemas({ [currenRouteId]: newSchemaOfCurrentRoute } as any);
       }
 
       return { routeId: currenRouteId, ...params, queryResult: data };
